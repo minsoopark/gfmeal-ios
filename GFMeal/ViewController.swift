@@ -29,13 +29,14 @@ class ViewController: UIViewController, LoginButtonDelegate {
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            print("sign in")
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let groupListViewController = storyBoard.instantiateViewController(withIdentifier: "groupListWrapper")
+            self.present(groupListViewController, animated:true, completion:nil)
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
         
     }
-
 }
 
