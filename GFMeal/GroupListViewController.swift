@@ -60,8 +60,8 @@ class GroupListViewController: UITableViewController {
             return
         }
         prompt.addTextField(configurationHandler: nil)
-        prompt.addAction(okAction)
         prompt.addAction(cancelAction)
+        prompt.addAction(okAction)
         present(prompt, animated: true, completion: nil)
     }
 
