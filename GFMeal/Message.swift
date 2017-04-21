@@ -9,6 +9,7 @@
 import Foundation
 
 class Message {
+    var id: String = ""
     var sender: String = ""
     var body: String = ""
     var createdAt: Int64 = 0
