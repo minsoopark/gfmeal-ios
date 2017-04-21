@@ -1,5 +1,5 @@
 //
-//  GroupListViewController.swift
+//  MessageListViewController.swift
 //  GFMeal
 //
 //  Created by Naver on 2017. 4. 22..
@@ -7,32 +7,15 @@
 //
 
 import UIKit
-import Firebase
 
-class GroupListViewController: UITableViewController {
+class MessageListViewController: UITableViewController {
     
-    @IBOutlet weak var newGroupButton: UIBarButtonItem!
+    var group: Group? = nil
     
-    var groups = [Group]()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let ref = FIRDatabase.database().reference()
-        ref.child("group").observe(FIRDataEventType.childAdded, with: { (snapshot) in
-            let groupDict = snapshot.value as? NSDictionary
-            let groupId = snapshot.key
-            let groupName = groupDict?["name"] as? String ?? ""
-            let group = Group()
-            group.id = groupId
-            group.name = groupName
-            self.groups += [group]
-            self.tableView.reloadData()
-        })
-        
-        self.navigationItem.rightBarButtonItem?.target = self
-        self.navigationItem.rightBarButtonItem?.action = #selector(GroupListViewController.showAlert)
-        
+
+        self.title = group?.name ?? ""
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,53 +27,28 @@ class GroupListViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func showAlert() {
-        let prompt = UIAlertController(title: "새 그룹", message: "그룹 이름", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "추가", style: .default) { (action) in
-            let userInput = prompt.textFields![0].text
-            if (userInput!.isEmpty) {
-                return
-            }
-            
-            let ref = FIRDatabase.database().reference()
-            ref.child("group").childByAutoId().setValue(["name": userInput!])
-        }
-        let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
-            return
-        }
-        prompt.addTextField(configurationHandler: nil)
-        prompt.addAction(okAction)
-        prompt.addAction(cancelAction)
-        present(prompt, animated: true, completion: nil)
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return 0
     }
 
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewCell", for: indexPath) as! GroupTableViewCell
-        let group = groups[indexPath.row]
-        cell.nameLabel.text = group.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let group = groups[indexPath.row]
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "messageList") as! MessageListViewController
-        viewController.group = group
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -30,7 +30,7 @@ class ViewController: UIViewController, LoginButtonDelegate {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let groupListViewController = storyBoard.instantiateViewController(withIdentifier: "groupListWrapper")
+            let groupListViewController = storyBoard.instantiateViewController(withIdentifier: "splitView")
             self.present(groupListViewController, animated:true, completion:nil)
         }
     }

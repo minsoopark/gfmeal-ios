@@ -12,6 +12,8 @@
 		4A64674F1EAA6DA700FBF059 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64674E1EAA6DA700FBF059 /* Group.swift */; };
 		4A6467511EAA6DF600FBF059 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6467501EAA6DF600FBF059 /* Message.swift */; };
 		4A6467531EAA6F8000FBF059 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6467521EAA6F8000FBF059 /* GroupListViewController.swift */; };
+		4A6467571EAA7FB000FBF059 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6467561EAA7FB000FBF059 /* MainSplitViewController.swift */; };
+		4A6467591EAA81D500FBF059 /* MessageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6467581EAA81D500FBF059 /* MessageListViewController.swift */; };
 		4A6F40DF1EA92B6400F7BDF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6F40DE1EA92B6400F7BDF6 /* AppDelegate.swift */; };
 		4A6F40E11EA92B6400F7BDF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6F40E01EA92B6400F7BDF6 /* ViewController.swift */; };
 		4A6F40E41EA92B6400F7BDF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6F40E21EA92B6400F7BDF6 /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 		4A64674E1EAA6DA700FBF059 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		4A6467501EAA6DF600FBF059 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4A6467521EAA6F8000FBF059 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
+		4A6467561EAA7FB000FBF059 /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		4A6467581EAA81D500FBF059 /* MessageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListViewController.swift; sourceTree = "<group>"; };
 		4A6F40DB1EA92B6400F7BDF6 /* GFMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GFMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A6F40DE1EA92B6400F7BDF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A6F40E01EA92B6400F7BDF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				4A6F40DE1EA92B6400F7BDF6 /* AppDelegate.swift */,
 				4A6F40E01EA92B6400F7BDF6 /* ViewController.swift */,
 				4A6F40E21EA92B6400F7BDF6 /* Main.storyboard */,
+				4A6467581EAA81D500FBF059 /* MessageListViewController.swift */,
 				4A6467521EAA6F8000FBF059 /* GroupListViewController.swift */,
 				4A64674C1EAA6B4C00FBF059 /* GroupTableViewCell.swift */,
 				4A6F40E51EA92B6400F7BDF6 /* Assets.xcassets */,
@@ -90,6 +95,7 @@
 				4A6F40EA1EA92B6400F7BDF6 /* Info.plist */,
 				4A64674E1EAA6DA700FBF059 /* Group.swift */,
 				4A6467501EAA6DF600FBF059 /* Message.swift */,
+				4A6467561EAA7FB000FBF059 /* MainSplitViewController.swift */,
 			);
 			path = GFMeal;
 			sourceTree = "<group>";
@@ -229,7 +235,9 @@
 			files = (
 				4A6467531EAA6F8000FBF059 /* GroupListViewController.swift in Sources */,
 				4A64674D1EAA6B4C00FBF059 /* GroupTableViewCell.swift in Sources */,
+				4A6467591EAA81D500FBF059 /* MessageListViewController.swift in Sources */,
 				4A6F40E11EA92B6400F7BDF6 /* ViewController.swift in Sources */,
+				4A6467571EAA7FB000FBF059 /* MainSplitViewController.swift in Sources */,
 				4A6467511EAA6DF600FBF059 /* Message.swift in Sources */,
 				4A6F40DF1EA92B6400F7BDF6 /* AppDelegate.swift in Sources */,
 				4A64674F1EAA6DA700FBF059 /* Group.swift in Sources */,
