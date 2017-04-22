@@ -32,12 +32,12 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
             let messageId = snapshot.key
             let messageSender = messageDict?["sender"] as? String ?? ""
             let messageBody = messageDict?["body"] as? String ?? ""
-            let messageCreatedAt = messageDict?["createdAt"] as? Int64 ?? 0
+            let messageCreatedAt = messageDict?["createdAt"] as? Double ?? 0.0
             let message = Message()
             message.id = messageId
             message.sender = messageSender
             message.body = messageBody
-            message.createdAt = messageCreatedAt
+            message.createdAt = Int64(messageCreatedAt)
             self.messages += [message]
             self.tableView.reloadData()
             self.scrollToBottom()
@@ -67,6 +67,7 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTableViewCell", for: indexPath) as! MessageTableViewCell
         let message = messages[indexPath.row]
         cell.senderLabel.text = message.sender
+        cell.createdAtLabel.text = Date().offsetFrom(date: Date(timeIntervalSince1970: TimeInterval(message.createdAt / 1000)))
         cell.bodyLabel.text = message.body
         return cell
     }
@@ -143,4 +144,38 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     */
 
+}
+
+extension Date {
+    func elapsedTimeMillis(date: Date) -> Int64 {
+        return Int64(Date().timeIntervalSince(date))
+    }
+    func yearsFrom(date: Date) -> Int {
+        return Int(elapsedTimeMillis(date: date) / 60 / 60 / 24 / 365)
+    }
+    func monthsFrom(date: Date) -> Int {
+        return Int(elapsedTimeMillis(date: date) / 60 / 60 / 24 / 30)
+    }
+    func weeksFrom(date: Date) -> Int{
+        return Int(elapsedTimeMillis(date: date) / 60 / 60 / 24 / 7)
+    }
+    func daysFrom(date: Date) -> Int {
+        return Int(elapsedTimeMillis(date: date) / 60 / 60 / 24)
+    }
+    func hoursFrom(date: Date) -> Int {
+        return Int(elapsedTimeMillis(date: date) / 60 / 60)
+    }
+    func minutesFrom(date: Date) -> Int {
+        return Int(elapsedTimeMillis(date: date) / 60)
+    }
+    func offsetFrom(date: Date) -> String {
+        if yearsFrom(date: date)   > 0 { return "\(yearsFrom(date: date))년 전"   }
+        else if monthsFrom(date: date)  > 0 { return "\(monthsFrom(date: date))개월 전"  }
+        else if weeksFrom(date: date)   > 0 { return "\(weeksFrom(date: date))주 전"   }
+        else if daysFrom(date: date)    > 0 { return "\(daysFrom(date: date))일 전"    }
+        else if hoursFrom(date: date)   > 0 { return "\(hoursFrom(date: date))시간 전"   }
+        else if minutesFrom(date: date) > 0 { return "\(minutesFrom(date: date))분 전" }
+        else { return "방금 전" }
+    }
+    
 }

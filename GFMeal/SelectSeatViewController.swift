@@ -56,7 +56,7 @@ class SelectSeatViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func selectSeat() {
         print("group id = \(groupId)")
-        let currentTimeMillis = NSDate().timeIntervalSince1970
+        let currentTimeMillis = Date().timeIntervalSince1970 * 1000
         let body = "\(seats[seatPicker.selectedRow(inComponent: 0)])\(numbers[seatIndex][numberPicker.selectedRow(inComponent: 0)]) 근처에 앉았어요."
         let message = [
             "sender": FIRAuth.auth()?.currentUser?.displayName ?? "",
