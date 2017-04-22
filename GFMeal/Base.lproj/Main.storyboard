@@ -23,6 +23,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="zFj-XT-88D" kind="show" identifier="showGroupList" id="38A-dn-uOJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -170,10 +173,71 @@
             </objects>
             <point key="canvasLocation" x="740" y="-176"/>
         </scene>
-        <!--Main Split View Controller-->
+        <!--SelectSeatViewController-->
+        <scene sceneID="OXN-Ug-u7O">
+            <objects>
+                <viewController restorationIdentifier="selectSeat" storyboardIdentifier="selectSeat" title="SelectSeatViewController" id="eGW-vO-0pb" customClass="SelectSeatViewController" customModule="GFMeal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Tw-G1-qVh"/>
+                        <viewControllerLayoutGuide type="bottom" id="yix-wD-WnV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FcT-UO-f99">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJC-2q-SRL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1p1-hN-pjp">
+                                <rect key="frame" x="0.0" y="301" width="375" height="301.5"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="자리 선택" id="mGy-1c-BcG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="HNU-OM-Ff4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ir1-rH-C92"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="closeBarButton" destination="HNU-OM-Ff4" id="rfZ-Mo-JSG"/>
+                        <outlet property="doneBarButton" destination="ir1-rH-C92" id="4ly-bA-FhM"/>
+                        <outlet property="numberPicker" destination="1p1-hN-pjp" id="t07-lI-qFn"/>
+                        <outlet property="seatPicker" destination="aJC-2q-SRL" id="GFc-wY-axf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Dv-F3-pAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2404" y="-177.66116941529236"/>
+        </scene>
+        <!--SelectSeatViewControllerWrapper-->
+        <scene sceneID="edy-DU-lJy">
+            <objects>
+                <navigationController restorationIdentifier="selectSeatWrapper" storyboardIdentifier="selectSeatWrapper" title="SelectSeatViewControllerWrapper" id="0nG-VY-5wR" customClass="SelectSeatViewControllerWrapper" customModule="GFMeal" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="1FB-Ug-idP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.80000000000000004" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eGW-vO-0pb" kind="relationship" relationship="rootViewController" id="hgm-JI-60q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1or-G4-ykJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1614" y="-177"/>
+        </scene>
+        <!--MainSplitViewController-->
         <scene sceneID="KG8-yX-UiS">
             <objects>
-                <splitViewController restorationIdentifier="splitView" storyboardIdentifier="splitView" id="zFj-XT-88D" customClass="MainSplitViewController" customModule="GFMeal" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController restorationIdentifier="splitView" storyboardIdentifier="splitView" title="MainSplitViewController" id="zFj-XT-88D" customClass="MainSplitViewController" customModule="GFMeal" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="keE-7Y-6TP" kind="relationship" relationship="masterViewController" id="nX8-y8-LlL"/>
                         <segue destination="k7m-gT-S4I" kind="relationship" relationship="detailViewController" id="owP-Z3-TWd"/>
@@ -193,6 +257,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.0" green="0.80000000000000004" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

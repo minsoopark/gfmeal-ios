@@ -42,6 +42,8 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
             self.tableView.reloadData()
         })
         
+        self.seatButton.addTarget(self, action: #selector(MessageListViewController.selectSeat), for: .touchUpInside)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -66,6 +68,16 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
         cell.senderLabel.text = message.sender
         cell.bodyLabel.text = message.body
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func selectSeat() {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "selectSeatWrapper") as! SelectSeatViewControllerWrapper
+        viewController.groupId = group?.id ?? ""
+        self.present(viewController, animated: true, completion: nil)
     }
 
     /*
