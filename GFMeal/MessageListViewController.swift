@@ -40,6 +40,7 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
             message.createdAt = messageCreatedAt
             self.messages += [message]
             self.tableView.reloadData()
+            self.scrollToBottom()
         })
         
         self.seatButton.addTarget(self, action: #selector(MessageListViewController.selectSeat), for: .touchUpInside)
@@ -78,6 +79,13 @@ class MessageListViewController: UIViewController, UITableViewDelegate, UITableV
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "selectSeatWrapper") as! SelectSeatViewControllerWrapper
         viewController.groupId = group?.id ?? ""
         self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func scrollToBottom() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 
     /*
